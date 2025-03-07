@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stickman Games Online - Free Stickman Parkour and Adventures</title>
+    <meta name="description" content="Play the best free stickman games online including Stickman Parkour, Breaking the Bank and more stick figure adventures!">
+    <link rel="canonical" href="https://stickman-games.online">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            blue: '#007AFF',
+                            indigo: '#5856D6',
+                            purple: '#AF52DE',
+                            pink: '#FF2D55',
+                            red: '#FF3B30',
+                            orange: '#FF9500',
+                            yellow: '#FFCC00',
+                            green: '#34C759',
+                            teal: '#5AC8FA',
+                            gray: '#8E8E93',
+                            darkgray: '#636366',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <header class="bg-apple-blue text-white py-6 shadow-md">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">Stickman Games</a>
+                <ul class="hidden md:flex space-x-6">
+                    <li><a href="#games" class="hover:text-apple-yellow transition">Games</a></li>
+                    <li><a href="#about" class="hover:text-apple-yellow transition">About</a></li>
+                    <li><a href="#contact" class="hover:text-apple-yellow transition">Contact</a></li>
+                </ul>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="hidden" id="mobile-menu">
+                <ul class="pt-4 pb-2">
+                    <li class="py-2"><a href="#games">Games</a></li>
+                    <li class="py-2"><a href="#about">About</a></li>
+                    <li class="py-2"><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-apple-blue">Best Stickman Games Online</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experience thrilling stick figure adventures with our collection of fast-paced parkour and action games!</p>
+        </section>
+
+        <section id="games" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-apple-indigo">Featured Game</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Stickman Parkour -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <h2 class="text-2xl font-bold p-4 bg-apple-green text-white">Stickman Parkour</h2>
+                    <div class="aspect-video">
+                        <iframe src="https://cloud.onlinegames.io/games/2024/construct/219/stickman-parkour/index-og.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 text-lg mb-4">Master the art of parkour in this thrilling stickman adventure! Run, jump, and overcome challenging obstacles as you test your reflexes and timing.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h3 class="font-bold text-apple-blue mb-2">🎮 Game Controls</h3>
+                                <p>Use arrow keys to move and jump</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h3 class="font-bold text-apple-blue mb-2">🎯 Objective</h3>
+                                <p>Complete each level with style</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h3 class="font-bold text-apple-blue mb-2">⭐ Features</h3>
+                                <p>Multiple challenging levels</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-apple-purple">Why Play Stickman Games?</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-apple-blue mb-4">Simple Yet Challenging</h3>
+                        <p class="mb-4">Stickman games combine minimalist graphics with engaging gameplay mechanics, creating an experience that's easy to understand but challenging to master.</p>
+                        
+                        <h3 class="text-xl font-bold text-apple-blue mb-4">Perfect for Quick Breaks</h3>
+                        <p class="mb-4">Whether you have a few minutes or hours to spare, our games are perfect for both quick gaming sessions and extended playtime.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-apple-blue mb-4">Regular Updates</h3>
+                        <p class="mb-4">We continuously update our game collection to ensure you always have fresh challenges to tackle and new adventures to embark upon.</p>
+                        
+                        <h3 class="text-xl font-bold text-apple-blue mb-4">Cross-Platform Gaming</h3>
+                        <p>Play seamlessly across all your devices - desktop, tablet, or mobile. Our games automatically adjust to provide the best experience on any screen size.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="mb-8">
+            <h2 class="text-3xl font-bold mb-6 text-apple-pink">Get in Touch</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="mb-4 text-lg">Have questions or suggestions? We'd love to hear from you! Get in touch with us for any inquiries about our games or potential collaborations.</p>
+                        <p class="text-apple-blue text-lg">Email: contact@stickman-games.online</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="font-bold text-apple-blue mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li>🎮 <a href="#games" class="text-apple-blue hover:text-apple-indigo">Play Game</a></li>
+                            <li>📜 <a href="/privacy.html" class="text-apple-blue hover:text-apple-indigo">Privacy Policy</a></li>
+                            <li>📋 <a href="/terms.html" class="text-apple-blue hover:text-apple-indigo">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2024 Stickman Games Online. All Rights Reserved.</p>
+                </div>
+                <div>
+                    <ul class="flex space-x-4">
+                        <li><a href="/privacy.html" class="hover:text-apple-blue transition">Privacy Policy</a></li>
+                        <li><a href="/terms.html" class="hover:text-apple-blue transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Stickman Games Online</title>
+    <meta name="description" content="Terms of Service for Stickman Games Online - Read our terms and conditions.">
+    <link rel="canonical" href="https://stickman-games.online/terms">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            blue: '#007AFF',
+                            indigo: '#5856D6',
+                            purple: '#AF52DE',
+                            pink: '#FF2D55',
+                            red: '#FF3B30',
+                            orange: '#FF9500',
+                            yellow: '#FFCC00',
+                            green: '#34C759',
+                            teal: '#5AC8FA',
+                            gray: '#8E8E93',
+                            darkgray: '#636366',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <header class="bg-apple-blue text-white py-6 shadow-md">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">Stickman Games</a>
+                <ul class="hidden md:flex space-x-6">
+                    <li><a href="/#games" class="hover:text-apple-yellow transition">Games</a></li>
+                    <li><a href="/#about" class="hover:text-apple-yellow transition">About</a></li>
+                    <li><a href="/#contact" class="hover:text-apple-yellow transition">Contact</a></li>
+                </ul>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="hidden" id="mobile-menu">
+                <ul class="pt-4 pb-2">
+                    <li class="py-2"><a href="/#games">Games</a></li>
+                    <li class="py-2"><a href="/#about">About</a></li>
+                    <li class="py-2"><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold mb-8 text-apple-blue">Terms of Service</h1>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="mb-4">Last updated: August 1, 2023</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Introduction</h2>
+                <p class="mb-4">Welcome to Stickman Games Online. These terms and conditions outline the rules and regulations for the use of our website.</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Intellectual Property Rights</h2>
+                <p class="mb-4">Other than the content you own, under these Terms, Stickman Games Online and/or its licensors own all the intellectual property rights and materials contained in this Website.</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Restrictions</h2>
+                <p class="mb-4">You are specifically restricted from all of the following:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Publishing any Website material in any other media</li>
+                    <li>Selling, sublicensing and/or otherwise commercializing any Website material</li>
+                    <li>Publicly performing and/or showing any Website material</li>
+                    <li>Using this Website in any way that is or may be damaging to this Website</li>
+                    <li>Using this Website in any way that impacts user access to this Website</li>
+                    <li>Using this Website contrary to applicable laws and regulations, or in any way may cause harm to the Website, or to any person or business entity</li>
+                </ul>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Your Content</h2>
+                <p class="mb-4">In these Terms of Service, "Your Content" shall mean any audio, video, text, images or other material you choose to display on this Website. By displaying Your Content, you grant Stickman Games Online a non-exclusive, worldwide, irrevocable, royalty-free license to use, reproduce, adapt, publish, translate and distribute it in any and all media.</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">No Warranties</h2>
+                <p class="mb-4">This Website is provided "as is," with all faults, and Stickman Games Online express no representations or warranties, of any kind related to this Website or the materials contained on this Website.</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Contact Us</h2>
+                <p>If you have any questions about these Terms, please contact us at: contact@stickman-games.online</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2023 Stickman Games Online. All Rights Reserved.</p>
+                </div>
+                <div>
+                    <ul class="flex space-x-4">
+                        <li><a href="/privacy" class="hover:text-apple-blue transition">Privacy Policy</a></li>
+                        <li><a href="/terms" class="hover:text-apple-blue transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html> 

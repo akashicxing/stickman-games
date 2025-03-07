@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stickman-games.online/sitemap.xml

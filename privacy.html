@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Stickman Games Online</title>
+    <meta name="description" content="Privacy Policy for Stickman Games Online - Learn how we protect your data.">
+    <link rel="canonical" href="https://stickman-games.online/privacy">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            blue: '#007AFF',
+                            indigo: '#5856D6',
+                            purple: '#AF52DE',
+                            pink: '#FF2D55',
+                            red: '#FF3B30',
+                            orange: '#FF9500',
+                            yellow: '#FFCC00',
+                            green: '#34C759',
+                            teal: '#5AC8FA',
+                            gray: '#8E8E93',
+                            darkgray: '#636366',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <header class="bg-apple-blue text-white py-6 shadow-md">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold">Stickman Games</a>
+                <ul class="hidden md:flex space-x-6">
+                    <li><a href="/#games" class="hover:text-apple-yellow transition">Games</a></li>
+                    <li><a href="/#about" class="hover:text-apple-yellow transition">About</a></li>
+                    <li><a href="/#contact" class="hover:text-apple-yellow transition">Contact</a></li>
+                </ul>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </nav>
+            <div class="hidden" id="mobile-menu">
+                <ul class="pt-4 pb-2">
+                    <li class="py-2"><a href="/#games">Games</a></li>
+                    <li class="py-2"><a href="/#about">About</a></li>
+                    <li class="py-2"><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold mb-8 text-apple-blue">Privacy Policy</h1>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="mb-4">Last updated: August 1, 2023</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Introduction</h2>
+                <p class="mb-4">Welcome to Stickman Games Online. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Information We Collect</h2>
+                <p class="mb-4">When you visit our website, we may collect certain information automatically including your IP address, browser type, and operating system. This information helps us improve our website and provide a better service.</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Cookies</h2>
+                <p class="mb-4">We use cookies to enhance your browsing experience. Cookies are small files stored on your device that allow us to recognize your browser. You can set your browser to refuse all or some browser cookies, but this may prevent some parts of our website from functioning properly.</p>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">How We Use Your Information</h2>
+                <p class="mb-4">We use the information we collect to:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Provide, maintain, and improve our website</li>
+                    <li>Understand how visitors use our website</li>
+                    <li>Detect and prevent technical issues</li>
+                </ul>
+                
+                <h2 class="text-2xl font-bold mt-6 mb-4 text-apple-indigo">Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us at: contact@stickman-games.online</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2023 Stickman Games Online. All Rights Reserved.</p>
+                </div>
+                <div>
+                    <ul class="flex space-x-4">
+                        <li><a href="/privacy" class="hover:text-apple-blue transition">Privacy Policy</a></li>
+                        <li><a href="/terms" class="hover:text-apple-blue transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html> 
