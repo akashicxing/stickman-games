@@ -8,6 +8,8 @@
     <link rel="canonical" href="https://stickman-games.online">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GC4CBYR228"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -39,6 +41,12 @@
                 backgroundColor: "#000000",
             };
         });
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-GC4CBYR228');
     </script>
     <style>
         .game-nav.active {
