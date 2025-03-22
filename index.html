@@ -7,6 +7,7 @@
     <meta name="description" content="Play the best free stickman games online including Stickman Parkour, Breaking the Bank and more stick figure adventures!">
     <link rel="canonical" href="https://stickman-games.online">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -29,18 +30,130 @@
                 }
             }
         }
+
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", (event) => {
+            window.RufflePlayer.config = {
+                autoplay: "on",
+                unmuteOverlay: "hidden",
+                backgroundColor: "#000000",
+            };
+        });
     </script>
+    <style>
+        .game-nav.active {
+            color: var(--apple-yellow);
+            font-weight: bold;
+        }
+        
+        .game-container {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .hidden {
+            display: none;
+        }
+
+        /* 全屏游戏容器样式 */
+        .fullscreen-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .fullscreen-game {
+            width: 95%;
+            height: 90%;
+            position: relative;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .close-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 添加放大提示样式 */
+        .zoom-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: none;
+            align-items: center;
+            gap: 6px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .game-container:hover .zoom-hint {
+            display: flex;
+        }
+
+        .zoom-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
+    <!-- 添加全屏游戏容器 -->
+    <div id="fullscreen-container" class="fullscreen-container">
+        <button id="close-fullscreen" class="close-button">×</button>
+        <div class="fullscreen-game">
+            <iframe id="fullscreen-iframe" src="" class="w-full h-full border-0" allowfullscreen></iframe>
+        </div>
+    </div>
     <header class="bg-apple-blue text-white py-6 shadow-md">
         <div class="container mx-auto px-4">
             <nav class="flex justify-between items-center">
                 <a href="/" class="text-2xl font-bold">Stickman Games</a>
-                <ul class="hidden md:flex space-x-6">
-                    <li><a href="#games" class="hover:text-apple-yellow transition">Games</a></li>
-                    <li><a href="#about" class="hover:text-apple-yellow transition">About</a></li>
-                    <li><a href="#contact" class="hover:text-apple-yellow transition">Contact</a></li>
-                </ul>
+                <div class="flex items-center">
+                    <ul class="hidden md:flex space-x-6 mr-6">
+                        <li><a href="#games" class="hover:text-apple-yellow transition">Games</a></li>
+                        <li><a href="#about" class="hover:text-apple-yellow transition">About</a></li>
+                        <li><a href="#contact" class="hover:text-apple-yellow transition">Contact</a></li>
+                    </ul>
+                    <div class="flex space-x-4">
+                        <button id="en" class="lang-btn text-apple-blue font-medium">EN</button>
+                        <button id="zh" class="lang-btn text-gray-900 font-medium">中</button>
+                        <button id="ja" class="lang-btn text-gray-900 font-medium">日</button>
+                    </div>
+                </div>
                 <button class="md:hidden" id="mobile-menu-button">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -59,37 +172,130 @@
 
     <main class="container mx-auto px-4 py-8">
         <section class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-apple-blue">Best Stickman Games Online</h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experience thrilling stick figure adventures with our collection of fast-paced parkour and action games!</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-apple-blue t-title">Best Stickman Games Online</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto t-subtitle">Experience thrilling stick figure adventures with our collection of fast-paced parkour and action games!</p>
+        </section>
+
+        <section class="mb-12">
+            <nav class="bg-apple-blue rounded-lg p-4 shadow-md">
+                <ul class="flex flex-wrap justify-center gap-6">
+                    <li>
+                        <a href="#parkour" class="text-white hover:text-apple-yellow transition game-nav active" data-category="parkour">
+                            <span class="t-nav-parkour">PK</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gta" class="text-white hover:text-apple-yellow transition game-nav" data-category="gta">
+                            <span class="t-nav-gta">GTA</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ragdoll" class="text-white hover:text-apple-yellow transition game-nav" data-category="physics">
+                            <span class="t-nav-ragdoll">RF</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#crazy" class="text-white hover:text-apple-yellow transition game-nav" data-category="physics">
+                            <span class="t-nav-crazy">CP</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </section>
 
         <section id="games" class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 text-apple-indigo">Featured Game</h2>
+            <h2 class="text-3xl font-bold mb-6 text-apple-indigo t-featured-games">Featured Games</h2>
             
-            <div class="max-w-4xl mx-auto">
+            <!-- 游戏网格布局 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Stickman Parkour -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <h2 class="text-2xl font-bold p-4 bg-apple-green text-white">Stickman Parkour</h2>
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="parkour">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-xl font-bold p-3 bg-apple-green text-white t-game-parkour">PK</h2>
                     <div class="aspect-video">
                         <iframe src="https://cloud.onlinegames.io/games/2024/construct/219/stickman-parkour/index-og.html" 
                                 class="w-full h-full border-0" 
                                 allowfullscreen></iframe>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-700 text-lg mb-4">Master the art of parkour in this thrilling stickman adventure! Run, jump, and overcome challenging obstacles as you test your reflexes and timing.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                            <div class="bg-gray-50 p-4 rounded-lg">
-                                <h3 class="font-bold text-apple-blue mb-2">🎮 Game Controls</h3>
-                                <p>Use arrow keys to move and jump</p>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-lg">
-                                <h3 class="font-bold text-apple-blue mb-2">🎯 Objective</h3>
-                                <p>Complete each level with style</p>
-                            </div>
-                            <div class="bg-gray-50 p-4 rounded-lg">
-                                <h3 class="font-bold text-apple-blue mb-2">⭐ Features</h3>
-                                <p>Multiple challenging levels</p>
-                            </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 text-sm mb-2 t-game-parkour-desc">Master parkour in this thrilling adventure!</p>
+                        <div class="text-xs text-gray-500">
+                            <p class="t-game-parkour-controls">Arrow keys to move and jump</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stickman GTA City -->
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="gta">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-xl font-bold p-3 bg-apple-orange text-white t-game-gta">GTA</h2>
+                    <div class="aspect-video">
+                        <iframe src="https://cloud.onlinegames.io/games/2024/unity3/stickman-gta-city/index-og.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 text-sm mb-2 t-game-gta-desc">Explore the city in GTA style!</p>
+                        <div class="text-xs text-gray-500">
+                            <p class="t-game-gta-controls">WASD + Mouse to play</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ragdoll Fall -->
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="physics">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-xl font-bold p-3 bg-apple-teal text-white t-game-ragdoll">RF</h2>
+                    <div class="aspect-video">
+                        <iframe src="https://www.onlinegames.io/games/2023/q/3/ragdoll-fall/index.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 text-sm mb-2 t-game-ragdoll-desc">Control your ragdoll through physics!</p>
+                        <div class="text-xs text-gray-500">
+                            <p class="t-game-ragdoll-controls">Arrow keys to balance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crazy Stickman Physics -->
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="physics">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-xl font-bold p-3 bg-apple-indigo text-white t-game-crazy">CP</h2>
+                    <div class="aspect-video">
+                        <iframe src="https://www.onlinegames.io/games/2023/construct/185/crazy-stickman-physics/index.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 text-sm mb-2 t-game-crazy-desc">Solve physics puzzles!</p>
+                        <div class="text-xs text-gray-500">
+                            <p class="t-game-crazy-controls">WASD to control</p>
                         </div>
                     </div>
                 </div>
@@ -163,6 +369,224 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        const translations = {
+            'en': {
+                'nav_games': 'Games',
+                'nav_about': 'About',
+                'nav_contact': 'Contact',
+                'title': 'Best Stickman Games Online',
+                'subtitle': 'Experience thrilling stick figure adventures with our collection of fast-paced parkour and action games!',
+                'featured_game': 'Featured Game',
+                'nav-parkour': 'Parkour',
+                'nav-adventure': 'Adventure',
+                'nav-action': 'Action',
+                'nav-physics': 'Physics',
+                'nav-gta': 'GTA',
+                'game-gta': 'Stickman GTA City',
+                'game-gta-desc': 'Explore the city in GTA style!',
+                'game-gta-controls': 'WASD + Mouse to play',
+                'game-gta-features': 'Open world, vehicles, missions',
+                
+                'game-prison': 'Escaping the Prison',
+                'game-prison-desc': 'Plan your escape from prison using various items and making quick decisions. Choose your path wisely to break free!',
+                'game-prison-controls': 'Mouse to select options and items',
+                'game-prison-features': 'Multiple endings, choice-based gameplay',
+                
+                'game-diamond': 'Stealing the Diamond',
+                'game-diamond-desc': 'Plan the perfect heist to steal a precious diamond! Choose your approach and use various tools to complete your mission.',
+                'game-diamond-controls': 'Mouse to select options and make choices',
+                'game-diamond-features': 'Multiple paths, interactive story, funny outcomes',
+                
+                'game-ragdoll': 'Ragdoll Fall',
+                'game-ragdoll-desc': 'Control your ragdoll stickman through challenging physics-based levels. Time your movements perfectly to reach the goal!',
+                'game-ragdoll-controls': 'Arrow keys to move and balance',
+                'game-ragdoll-features': 'Physics simulation, challenging levels',
+                
+                'game-crazy': 'Crazy Stickman Physics',
+                'game-crazy-desc': 'Experience crazy physics-based challenges with your stickman. Solve puzzles and overcome obstacles in this wild adventure!',
+                'game-crazy-controls': 'WASD or Arrow keys to control',
+                'game-crazy-features': 'Physics puzzles, interactive objects',
+                'click-to-zoom': 'Click to zoom',
+                'featured_games': 'Featured Games',
+                'game-parkour': 'Stickman Parkour',
+                'game-parkour-desc': 'Master parkour in this thrilling adventure!',
+                'game-parkour-controls': 'Arrow keys to move and jump',
+            },
+            'zh': {
+                'nav_games': '游戏',
+                'nav_about': '关于',
+                'nav_contact': '联系',
+                'title': '最佳火柴人在线游戏',
+                'subtitle': '体验我们精选的快节奏跑酷和动作游戏，尽享火柴人冒险的刺激！',
+                'featured_game': '精选游戏',
+                'nav-parkour': '跑酷',
+                'nav-adventure': '冒险',
+                'nav-action': '动作',
+                'nav-physics': '物理',
+                'nav-gta': '都市',
+                'game-gta': '火柴人都市',
+                'game-gta-desc': '在这款GTA风格的游戏中探索城市。完成任务、驾驶车辆，体验开放世界的刺激！',
+                'game-gta-controls': 'WASD移动，鼠标瞄准，点击交互',
+                'game-gta-features': '开放世界、载具、任务',
+                
+                'game-prison': '越狱大作战',
+                'game-prison-desc': '使用各种道具策划你的越狱计划。明智地选择你的逃脱路线！',
+                'game-prison-controls': '使用鼠标选择选项和物品',
+                'game-prison-features': '多重结局、选择性gameplay',
+                
+                'game-diamond': '钻石大盗',
+                'game-diamond-desc': '策划完美的盗窃行动来偷取珍贵的钻石！选择你的方式并使用各种工具完成任务。',
+                'game-diamond-controls': '使用鼠标选择选项和做出选择',
+                'game-diamond-features': '多重路线、互动剧情、搞笑结局',
+                
+                'game-ragdoll': '布偶跌落',
+                'game-ragdoll-desc': '在基于物理的关卡中控制你的布偶火柴人。完美把握时机到达终点！',
+                'game-ragdoll-controls': '方向键移动和平衡',
+                'game-ragdoll-features': '物理模拟、挑战关卡',
+                
+                'game-crazy': '疯狂物理火柴人',
+                'game-crazy-desc': '体验疯狂的物理挑战。解决谜题，克服障碍，享受这场疯狂冒险！',
+                'game-crazy-controls': 'WASD或方向键控制',
+                'game-crazy-features': '物理谜题、互动物体',
+                'click-to-zoom': '点击放大',
+                'featured_games': '精选游戏',
+                'game-parkour': '火柴人跑酷',
+                'game-parkour-desc': '在这场惊险刺激的冒险中掌握跑酷技巧！',
+                'game-parkour-controls': '使用方向键移动和跳跃',
+            },
+            'ja': {
+                'nav_games': 'ゲーム',
+                'nav_about': '概要',
+                'nav_contact': '連絡先',
+                'title': 'スティックマンゲーム オンライン',
+                'subtitle': '爽快なパルクールとアクションゲームで、スリリングなスティックマンの冒険を体験しよう！',
+                'featured_game': '注目のゲーム',
+                'nav-parkour': 'パルクール',
+                'nav-adventure': 'アドベンチャー',
+                'nav-action': 'アクション',
+                'nav-physics': 'フィジックス',
+                'nav-gta': '都市',
+                'game-gta': 'スティックマンシティ',
+                'game-gta-desc': 'GTAスタイルの冒険で街を探索。ミッションをクリアし、車を運転し、オープンワールドのスリルを体験しよう！',
+                'game-gta-controls': 'WASD移動、マウス照準、クリックで操作',
+                'game-gta-features': 'オープンワールド、乗り物、ミッション',
+                
+                'game-prison': '脱獄チャレンジ',
+                'game-prison-desc': 'アイテムを使って脱獄を計画。賢明な選択で自由を勝ち取れ！',
+                'game-prison-controls': 'マウスでオプションとアイテムを選択',
+                'game-prison-features': 'マルチエンディング、選択型ゲーム',
+                
+                'game-diamond': 'ダイヤモンドを盗め',
+                'game-diamond-desc': '完璧な計画を立てて、貴重なダイヤモンドを盗もう！アプローチを選び、様々なツールを使ってミッションを完遂せよ。',
+                'game-diamond-controls': 'マウスでオプションを選択',
+                'game-diamond-features': '複数のルート、インタラクティブストーリー、面白い結末',
+                
+                'game-ragdoll': 'ラグドールフォール',
+                'game-ragdoll-desc': '物理演算ベースのレベルでラグドールを操作。完璧なタイミングでゴールを目指そう！',
+                'game-ragdoll-controls': '矢印キーで移動とバランス',
+                'game-ragdoll-features': '物理演算、チャレンジレベル',
+                
+                'game-crazy': 'クレイジー物理スティックマン',
+                'game-crazy-desc': 'クレイジーな物理チャレンジに挑戦。パズルを解き、障害物を乗り越えて冒険しよう！',
+                'game-crazy-controls': 'WASDまたは矢印キーで操作',
+                'game-crazy-features': '物理パズル、インタラクティブオブジェクト',
+                'click-to-zoom': 'クリックで拡大',
+                'featured_games': '注目のゲーム',
+                'game-parkour': 'スティックマンパルクール',
+                'game-parkour-desc': 'スリリングな冒険でパルクールをマスター！',
+                'game-parkour-controls': '矢印キーで移動とジャンプ',
+            }
+        };
+
+        // 语言切换功能
+        function switchLanguage(lang) {
+            // 更新按钮样式 - 使用中的语言为白色，未使用的为灰色
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.className = 'lang-btn text-gray-600 font-medium hover:text-gray-800';
+            });
+            document.getElementById(lang).className = 'lang-btn text-white font-medium';
+
+            // 更新页面文本
+            Object.keys(translations[lang]).forEach(key => {
+                const elements = document.getElementsByClassName(`t-${key}`);
+                Array.from(elements).forEach(element => {
+                    element.textContent = translations[lang][key];
+                });
+            });
+
+            // 保存语言选择
+            localStorage.setItem('preferred_language', lang);
+        }
+
+        // 初始化语言
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred_language') || 'en';
+            switchLanguage(savedLang);
+
+            // 添加语言切换事件监听
+            document.getElementById('en').addEventListener('click', () => switchLanguage('en'));
+            document.getElementById('zh').addEventListener('click', () => switchLanguage('zh'));
+            document.getElementById('ja').addEventListener('click', () => switchLanguage('ja'));
+
+            // 游戏导航切换
+            const gameNavs = document.querySelectorAll('.game-nav');
+            gameNavs.forEach(nav => {
+                nav.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // 移除所有导航项的激活状态
+                    gameNavs.forEach(item => item.classList.remove('active'));
+                    // 添加当前项的激活状态
+                    nav.classList.add('active');
+                    
+                    // 获取并显示对应分类的游戏
+                    const category = nav.dataset.category;
+                    showGames(category);
+                });
+            });
+
+            // 游戏全屏功能
+            const gameContainers = document.querySelectorAll('.game-container');
+            const fullscreenContainer = document.getElementById('fullscreen-container');
+            const fullscreenIframe = document.getElementById('fullscreen-iframe');
+            const closeButton = document.getElementById('close-fullscreen');
+
+            // 点击游戏容器时全屏显示
+            gameContainers.forEach(container => {
+                container.addEventListener('click', () => {
+                    const gameIframe = container.querySelector('iframe');
+                    fullscreenIframe.src = gameIframe.src;
+                    fullscreenContainer.style.display = 'flex';
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                });
+            });
+
+            // 关闭全屏显示
+            closeButton.addEventListener('click', () => {
+                fullscreenContainer.style.display = 'none';
+                fullscreenIframe.src = '';
+                document.body.style.overflow = 'auto';
+            });
+
+            // ESC键关闭全屏
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && fullscreenContainer.style.display === 'flex') {
+                    closeButton.click();
+                }
+            });
+        });
+
+        // 显示对应分类的游戏
+        function showGames(category) {
+            const gameContainers = document.querySelectorAll('.game-container');
+            gameContainers.forEach(container => {
+                if (container.dataset.category === category || category === 'all') {
+                    container.classList.remove('hidden');
+                } else {
+                    container.classList.add('hidden');
+                }
+            });
+        }
     </script>
 </body>
 </html>
