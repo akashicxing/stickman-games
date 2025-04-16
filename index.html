@@ -245,6 +245,29 @@
             <!-- 其他游戏网格布局 -->
             <h3 class="text-2xl font-bold mb-6 text-apple-blue">More Games</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- StickMan Parkour 2 -->
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="parkour">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-xl font-bold p-3 bg-apple-green text-white t-game-parkour2">PK2</h2>
+                    <div class="aspect-video">
+                        <iframe src="/games/stickman-parkour-2/index.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 text-sm mb-2 t-game-parkour2-desc">Challenge yourself with advanced parkour moves!</p>
+                        <div class="text-xs text-gray-500">
+                            <p class="t-game-parkour2-controls">Arrow keys to move and jump</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Stickman Parkour -->
                 <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="parkour">
                     <div class="zoom-hint">
@@ -452,6 +475,9 @@
                 'game-hook': 'Stickman Hook',
                 'game-hook-desc': 'Use your hook to swing and reach the goal!',
                 'game-hook-controls': 'Mouse to aim and click to shoot hook',
+                'game-parkour2': 'StickMan Parkour 2',
+                'game-parkour2-desc': 'Challenge yourself with advanced parkour moves!',
+                'game-parkour2-controls': 'Arrow keys to move and jump',
             },
             'zh': {
                 'nav_games': '游戏',
@@ -497,6 +523,9 @@
                 'game-hook': '火柴人钩索',
                 'game-hook-desc': '使用钩索摆动并到达终点！',
                 'game-hook-controls': '鼠标瞄准，点击发射钩索',
+                'game-parkour2': '火柴人跑酷 2',
+                'game-parkour2-desc': '挑战高级跑酷动作！',
+                'game-parkour2-controls': '使用方向键移动和跳跃',
             },
             'ja': {
                 'nav_games': 'ゲーム',
@@ -542,6 +571,9 @@
                 'game-hook': 'スティックマンフック',
                 'game-hook-desc': 'フックを使ってスイングし、ゴールを目指そう！',
                 'game-hook-controls': 'マウスで照準を合わせ、クリックでフックを発射',
+                'game-parkour2': 'スティックマンパルクール 2',
+                'game-parkour2-desc': '高度なパルクールに挑戦しよう！',
+                'game-parkour2-controls': '矢印キーで移動とジャンプ',
             }
         };
 
