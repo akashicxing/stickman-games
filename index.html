@@ -217,8 +217,34 @@
         <section id="games" class="mb-16">
             <h2 class="text-3xl font-bold mb-6 text-apple-indigo t-featured-games">Featured Games</h2>
             
-            <!-- 游戏网格布局 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- 主要游戏 -->
+            <div class="mb-8">
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl mx-auto" data-category="physics">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-2xl font-bold p-4 bg-apple-purple text-white t-game-hook">Stickman Hook</h2>
+                    <div class="aspect-video">
+                        <iframe src="/games/stickman-hook/index.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 text-lg mb-3 t-game-hook-desc">Use your hook to swing and reach the goal!</p>
+                        <div class="text-sm text-gray-500">
+                            <p class="t-game-hook-controls">Mouse to aim and click to shoot hook</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他游戏网格布局 -->
+            <h3 class="text-2xl font-bold mb-6 text-apple-blue">More Games</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- Stickman Parkour -->
                 <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="parkour">
                     <div class="zoom-hint">
@@ -423,6 +449,9 @@
                 'game-parkour': 'Stickman Parkour',
                 'game-parkour-desc': 'Master parkour in this thrilling adventure!',
                 'game-parkour-controls': 'Arrow keys to move and jump',
+                'game-hook': 'Stickman Hook',
+                'game-hook-desc': 'Use your hook to swing and reach the goal!',
+                'game-hook-controls': 'Mouse to aim and click to shoot hook',
             },
             'zh': {
                 'nav_games': '游戏',
@@ -465,6 +494,9 @@
                 'game-parkour': '火柴人跑酷',
                 'game-parkour-desc': '在这场惊险刺激的冒险中掌握跑酷技巧！',
                 'game-parkour-controls': '使用方向键移动和跳跃',
+                'game-hook': '火柴人钩索',
+                'game-hook-desc': '使用钩索摆动并到达终点！',
+                'game-hook-controls': '鼠标瞄准，点击发射钩索',
             },
             'ja': {
                 'nav_games': 'ゲーム',
@@ -507,6 +539,9 @@
                 'game-parkour': 'スティックマンパルクール',
                 'game-parkour-desc': 'スリリングな冒険でパルクールをマスター！',
                 'game-parkour-controls': '矢印キーで移動とジャンプ',
+                'game-hook': 'スティックマンフック',
+                'game-hook-desc': 'フックを使ってスイングし、ゴールを目指そう！',
+                'game-hook-controls': 'マウスで照準を合わせ、クリックでフックを発射',
             }
         };
 
