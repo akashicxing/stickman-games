@@ -245,6 +245,75 @@
             <!-- 其他游戏网格布局 -->
             <h3 class="text-2xl font-bold mb-6 text-apple-blue">More Games</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Apple Shooter -->
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="action">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-xl font-bold p-3 bg-apple-red text-white t-game-shooter">AS</h2>
+                    <div class="aspect-video">
+                        <iframe src="/games/apple-shooter/index.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 text-sm mb-2 t-game-shooter-desc">Test your archery skills by shooting apples!</p>
+                        <div class="text-xs text-gray-500">
+                            <p class="t-game-shooter-controls">Mouse to aim and shoot</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crazy Box -->
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="physics">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-xl font-bold p-3 bg-apple-orange text-white t-game-crazy-box">CB</h2>
+                    <div class="aspect-video">
+                        <iframe src="/games/crazy-box/index.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 text-sm mb-2 t-game-crazy-box-desc">挑战物理谜题，控制盒子到达终点！</p>
+                        <div class="text-xs text-gray-500">
+                            <p class="t-game-crazy-box-controls">方向键控制移动，空格键跳跃</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Spear Stickman -->
+                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="action">
+                    <div class="zoom-hint">
+                        <svg class="zoom-icon" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                        </svg>
+                        <span class="t-click-to-zoom">点击放大</span>
+                    </div>
+                    <h2 class="text-xl font-bold p-3 bg-apple-purple text-white t-game-spear">SP</h2>
+                    <div class="aspect-video">
+                        <iframe src="/games/spear-stickman/index.html" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 text-sm mb-2 t-game-spear-desc">用长矛击败敌人，成为最强战士！</p>
+                        <div class="text-xs text-gray-500">
+                            <p class="t-game-spear-controls">鼠标瞄准和投掷长矛</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- StickMan Parkour 2 -->
                 <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="parkour">
                     <div class="zoom-hint">
@@ -264,98 +333,6 @@
                         <p class="text-gray-700 text-sm mb-2 t-game-parkour2-desc">Challenge yourself with advanced parkour moves!</p>
                         <div class="text-xs text-gray-500">
                             <p class="t-game-parkour2-controls">Arrow keys to move and jump</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Stickman Parkour -->
-                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="parkour">
-                    <div class="zoom-hint">
-                        <svg class="zoom-icon" viewBox="0 0 24 24">
-                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
-                        </svg>
-                        <span class="t-click-to-zoom">点击放大</span>
-                    </div>
-                    <h2 class="text-xl font-bold p-3 bg-apple-green text-white t-game-parkour">PK</h2>
-                    <div class="aspect-video">
-                        <iframe src="https://cloud.onlinegames.io/games/2024/construct/219/stickman-parkour/index-og.html" 
-                                class="w-full h-full border-0" 
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-700 text-sm mb-2 t-game-parkour-desc">Master parkour in this thrilling adventure!</p>
-                        <div class="text-xs text-gray-500">
-                            <p class="t-game-parkour-controls">Arrow keys to move and jump</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Stickman GTA City -->
-                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="gta">
-                    <div class="zoom-hint">
-                        <svg class="zoom-icon" viewBox="0 0 24 24">
-                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
-                        </svg>
-                        <span class="t-click-to-zoom">点击放大</span>
-                    </div>
-                    <h2 class="text-xl font-bold p-3 bg-apple-orange text-white t-game-gta">GTA</h2>
-                    <div class="aspect-video">
-                        <iframe src="https://cloud.onlinegames.io/games/2024/unity3/stickman-gta-city/index-og.html" 
-                                class="w-full h-full border-0" 
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-700 text-sm mb-2 t-game-gta-desc">Explore the city in GTA style!</p>
-                        <div class="text-xs text-gray-500">
-                            <p class="t-game-gta-controls">WASD + Mouse to play</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ragdoll Fall -->
-                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="physics">
-                    <div class="zoom-hint">
-                        <svg class="zoom-icon" viewBox="0 0 24 24">
-                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
-                        </svg>
-                        <span class="t-click-to-zoom">点击放大</span>
-                    </div>
-                    <h2 class="text-xl font-bold p-3 bg-apple-teal text-white t-game-ragdoll">RF</h2>
-                    <div class="aspect-video">
-                        <iframe src="https://www.onlinegames.io/games/2023/q/3/ragdoll-fall/index.html" 
-                                class="w-full h-full border-0" 
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-700 text-sm mb-2 t-game-ragdoll-desc">Control your ragdoll through physics!</p>
-                        <div class="text-xs text-gray-500">
-                            <p class="t-game-ragdoll-controls">Arrow keys to balance</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Crazy Stickman Physics -->
-                <div class="game-container bg-white rounded-lg shadow-lg overflow-hidden" data-category="physics">
-                    <div class="zoom-hint">
-                        <svg class="zoom-icon" viewBox="0 0 24 24">
-                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                            <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
-                        </svg>
-                        <span class="t-click-to-zoom">点击放大</span>
-                    </div>
-                    <h2 class="text-xl font-bold p-3 bg-apple-indigo text-white t-game-crazy">CP</h2>
-                    <div class="aspect-video">
-                        <iframe src="https://www.onlinegames.io/games/2023/construct/185/crazy-stickman-physics/index.html" 
-                                class="w-full h-full border-0" 
-                                allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-gray-700 text-sm mb-2 t-game-crazy-desc">Solve physics puzzles!</p>
-                        <div class="text-xs text-gray-500">
-                            <p class="t-game-crazy-controls">WASD to control</p>
                         </div>
                     </div>
                 </div>
@@ -478,6 +455,9 @@
                 'game-parkour2': 'StickMan Parkour 2',
                 'game-parkour2-desc': 'Challenge yourself with advanced parkour moves!',
                 'game-parkour2-controls': 'Arrow keys to move and jump',
+                'game-shooter': 'Apple Shooter',
+                'game-shooter-desc': 'Test your archery skills by shooting apples!',
+                'game-shooter-controls': 'Mouse to aim and shoot',
             },
             'zh': {
                 'nav_games': '游戏',
@@ -526,6 +506,9 @@
                 'game-parkour2': '火柴人跑酷 2',
                 'game-parkour2-desc': '挑战高级跑酷动作！',
                 'game-parkour2-controls': '使用方向键移动和跳跃',
+                'game-shooter': '射苹果',
+                'game-shooter-desc': '测试你的射箭技巧，射击苹果！',
+                'game-shooter-controls': '使用鼠标瞄准和射击',
             },
             'ja': {
                 'nav_games': 'ゲーム',
@@ -574,6 +557,9 @@
                 'game-parkour2': 'スティックマンパルクール 2',
                 'game-parkour2-desc': '高度なパルクールに挑戦しよう！',
                 'game-parkour2-controls': '矢印キーで移動とジャンプ',
+                'game-shooter': 'アップルシューター',
+                'game-shooter-desc': '弓矢でリンゴを射って、アーチェリーの腕前を試そう！',
+                'game-shooter-controls': 'マウスで照準を合わせて発射',
             }
         };
 
