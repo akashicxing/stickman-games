@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Box - Stickman Games</title>
+    <meta name="description" content="Play Crazy Box - Control the box through challenging physics puzzles in this exciting stickman game!">
+    <link rel="canonical" href="https://stickman-games.online/crazybox.html">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GC4CBYR228"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GC4CBYR228');
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .game-container {
+            width: 100%;
+            height: calc(100vh - 64px);
+            position: relative;
+            background: #000;
+        }
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .back-button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .back-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <a href="/" class="back-button">
+        <svg class="back-icon" viewBox="0 0 24 24">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        <span>返回主页</span>
+    </a>
+    
+    <div class="game-container">
+        <iframe src="/games/crazy-box/index.html" allowfullscreen></iframe>
+    </div>
+</body>
+</html> 
